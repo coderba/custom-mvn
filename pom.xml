@@ -4,23 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>custom-plugin</groupId>
+    <groupId>com.genband.plugin</groupId>
     <artifactId>cron-checker</artifactId>
     <version>1</version>
-    <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>custom-plugin</groupId>-->
-                <!--<artifactId>cron-checker</artifactId>-->
-                <!--<version>1</version>-->
-                <!--<configuration>-->
-                    <!--<includeFiles>-->
-                        <!--<includeFile>D:\git_repos\spidr_core\wae\platform\sbin\assetup</includeFile>-->
-                    <!--</includeFiles>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
+
     <packaging>maven-plugin</packaging>
     <name>first-maven-plugin Maven Mojo</name>
     <url>http://maven.apache.org</url>

@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Echos an object string to the output screen.
@@ -40,7 +38,7 @@ public class CheckMojo extends AbstractMojo {
         if(includeFiles.size()>0){
             //can not write foreach loop because of compilation error on some environments for MOJO.
             for(int i=0; i<includeFiles.size(); i++){
-                readFile(includeFiles.get(i).toString(), "2>&1");
+                readFile(includeFiles.get(i).toString(), Constants.SUFFIX);
             }
         }
 
@@ -58,7 +56,7 @@ public class CheckMojo extends AbstractMojo {
             String currentLineSTR;
 
             while ((currentLineSTR = bufferedReader.readLine()) != null) {
-                checkCronjobLines(currentLineSTR, suffix);
+                checkCronjobLines(currentLineSTR, suffix, Constants.BUGGY_LINE_BEGIN, Constants.BUGGY_LINE_END);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,8 +73,8 @@ public class CheckMojo extends AbstractMojo {
         }
     }
 
-    private void checkCronjobLines(String currentLineSTR, String suffix){
-        if (currentLineSTR.contains("install_cronjob") && !currentLineSTR.contains("uninstall_cronjob")) {
+    private void checkCronjobLines(String currentLineSTR, String suffix, String buggyLineBegin, String buggyLineEnd) {
+        if (currentLineSTR.contains(buggyLineBegin) && !currentLineSTR.contains(buggyLineEnd)) {
             if (currentLineSTR.contains(suffix)) {
                 ableToLog &= true;
                 getLog().info(currentLineSTR +" >>> "+ Constants.CONFIRMED);
