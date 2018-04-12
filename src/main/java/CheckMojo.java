@@ -35,7 +35,7 @@ public class CheckMojo extends AbstractMojo {
         getLog().info(Constants.CRONJOBS_CHECK_BEGIN);
         getLog().info(includeFiles.get(0).toString());
         //reads file and check cronjob lines.
-        if(includeFiles.size()>0){
+        if(includeFiles != null && includeFiles.size()>0){
             //can not write foreach loop because of compilation error on some environments for MOJO.
             for(int i=0; i<includeFiles.size(); i++){
                 readFile(includeFiles.get(i).toString(), Constants.SUFFIX);
